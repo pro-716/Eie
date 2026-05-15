@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>716 SIGNAL | التشفير</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #05060f; --surface: #0b0d1a; --accent: #6366f1; --text: #e8eaf6; }
+        body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Sans Arabic', sans-serif; padding: 2rem; }
+        .nav-back { margin-bottom: 2rem; }
+        .nav-back a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .panel { background: var(--surface); padding: 2rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.05); max-width: 800px; margin: 0 auto; }
+        textarea { width: 100%; height: 150px; background: #0f1120; border: 1px solid #1e293b; color: white; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; font-family: 'Fira Code', monospace; }
+        .actions { display: flex; gap: 1rem; }
+        button { flex: 1; padding: 1rem; border: none; border-radius: 0.5rem; cursor: pointer; font-weight: 600; background: var(--accent); color: white; }
+    </style>
+</head>
+<body>
+    <div class="nav-back"><a href="index.html">← العودة للرئيسية</a></div>
+    <div class="panel">
+        <h2>716 SIGNAL - وحدة التشفير</h2>
+        <textarea id="inputText" placeholder="أدخل النص أو الكود المراد حمايته هنا..."></textarea>
+        <div class="actions">
+            <button onclick="process('encrypt')">تشفير البيانات</button>
+            <button onclick="process('decrypt')" style="background: #374151;">فك التشفير</button>
+        </div>
+        <textarea id="outputText" readonly placeholder="النتيجة ستظهر هنا..."></textarea>
+    </div>
+
+    <script>
+        function process(type) {
+            const input = document.getElementById('inputText').value;
+            if(!input) return alert('الرجاء إدخال نص');
+            // منطق تشفير مبسط للعرض (يمكن استبداله بـ AES)
+            if(type === 'encrypt') {
+                document.getElementById('outputText').value = btoa(unescape(encodeURIComponent(input)));
+            } else {
+                try {
+                    document.getElementById('outputText').value = decodeURIComponent(escape(atob(input)));
+                } catch(e) { alert('خطأ في فك التشفير'); }
+            }
+        }
+    </script>
+</body>
+</html>
