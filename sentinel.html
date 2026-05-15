@@ -1,0 +1,22 @@
+function exportReport(){
+    if(!currentVulns.length){ toast('لا توجد ثغرات للتصدير','err'); return; }
+    const date = new Date().toLocaleDateString('ar-IQ');
+    let report = `==========================================\n`;
+    report += `      716 SENTINEL - SECURITY REPORT      \n`;
+    report += `==========================================\n`;
+    report += `التاريخ: ${date}\n\n`;
+    
+    currentVulns.forEach((v,i) => {
+        report += `[${i+1}] اسم الثغرة: ${v.name}\n`;
+        report += `الخطورة: ${v.sev} | المعرّف: ${v.id}\n`;
+        report += `الوصف: ${v.desc}\n`;
+        report += `الحل المقترح: ${v.fix}\n`;
+        report += `------------------------------------------\n`;
+    });
+
+    const blob = new Blob([report], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href=url; a.download=`716_Report_${Date.now()}.txt`;
+    a.click();
+}
