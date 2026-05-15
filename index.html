@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>716 CYBER Sec |  </title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #05060f; --surface: #0b0d1a; --card: #0f1120;
+  --border: rgba(255,255,255,0.06);
+  --glow-a: #6366f1; /* SIGNAL */
+  --glow-b: #f43f5e; /* SENTINEL */
+  --text: #e8eaf6; --text-sec: #6b7280;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: 'IBM Plex Sans Arabic', sans-serif; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+}
+.header-main { text-align: center; margin-bottom: 3rem; }
+.header-main h1 { font-size: 3rem; letter-spacing: 2px; font-weight: 700; }
+.header-main span { color: var(--glow-a); text-shadow: 0 0 15px var(--glow-a); }
+.container { 
+    width: 90%; 
+    max-width: 1000px; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 2rem; 
+}
+.card { 
+    background: var(--card); 
+    border: 1px solid var(--border); 
+    border-radius: 1.5rem; 
+    padding: 2.5rem; 
+    position: relative; 
+    text-decoration: none; 
+    color: inherit; 
+    transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1); 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
+.card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+.card.signal::before { background: var(--glow-a); box-shadow: 0 0 20px var(--glow-a); }
+.card.sentinel::before { background: var(--glow-b); box-shadow: 0 0 20px var(--glow-b); }
+.card-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; display: block; }
+.card-desc { color: var(--text-sec); line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
+.btn { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 0.8rem 1.5rem; 
+    border-radius: 0.8rem; 
+    font-weight: 600; 
+    transition: 0.3s; 
+}
+.signal .btn { background: var(--glow-a); color: white; }
+.sentinel .btn { background: var(--glow-b); color: white; }
+</style>
+</head>
+<body>
+    <div class="header-main">
+        <h1>716 <span>CYBER</span> SUITE</h1>
+        <p style="color: var(--text-sec); margin-top: 10px;">نظام الحماية والتحليل المتقدم</p>
+    </div>
+
+    <div class="container">
+        <a href="signal.html" class="card signal">
+            <span class="card-title">716 SIGNAL</span>
+            <p class="card-desc">أداة التشفير الاحترافية. قم بحماية ملفاتك ونصوصك باستخدام أقوى خوارزميات التشفير العالمية.</p>
+            <div class="btn">دخول SIGNAL</div>
+        </a>
+
+        <a href="sentinel.html" class="card sentinel">
+            <span class="card-title">716 SENTINEL</span>
+            <p class="card-desc">ماسح الثغرات الذكي. افحص الكود البرمجي واستخرج التقارير الأمنية CVE بضغطة زر.</p>
+            <div class="btn">بدء SENTINEL</div>
+        </a>
+    </div>
+</body>
+</html>
